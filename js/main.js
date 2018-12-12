@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
   //creo var momentanea
   // var numeroGiocaotori = 2
   //creao array giocatori
@@ -14,18 +14,26 @@ $(document).ready(function(){
     success: function(data, stato) {
       var info = data.response;
       for (var i = 0; i < info.length; i++) {
-      /*console.log(info[i]);
-      console.log(info[i].playerCode);*/
-      nuovoGiocatore = {
-        //associo ogni valore
-        codiceUnivoco: info[i].playerCode,
-        puntiRealizzati: info[i].points,
-        rimbalzi: info[i].rebounds,
-        falli: info[i].fouls
+        /*console.log(info[i]);
+        console.log(info[i].playerCode);*/
+        nuovoGiocatore = {
+          //associo ogni valore
+          codiceUnivoco: info[i].playerCode,
+          puntiRealizzati: info[i].points,
+          rimbalzi: info[i].rebounds,
+          falli: info[i].fouls
+        }
+        //inserisco nell'array
+        legaBasket.push(nuovoGiocatore);
+
+        if (legaBasket.length == 10) {
+          for (var i = 0; i < legaBasket.length; i++) {
+            console.log(legaBasket[i].codiceUnivoco);
+          }
+
+        }
+
       }
-      //inserisco nell'array
-      legaBasket.push(nuovoGiocatore);
-    }
 
     },
     error: function(richiesta, stato, errori) {
@@ -33,5 +41,5 @@ $(document).ready(function(){
     }
   });
 
-  console.log(legaBasket);
+
 });
