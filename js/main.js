@@ -44,12 +44,24 @@ $(document).ready(function() {
         }
 
       }
-
+      $('.cardGiocatore').click(function(){
+        var indiceCardGiocatore = $(this).index();
+        console.log(indiceCardGiocatore);
+        if(legaBasket.indexOf(indiceCardGiocatore)){
+          console.log("ok");
+          console.log(context);
+          var templateBaseMain = $('#focusGiocatore').html();
+          var templateCompilatoMain = Handlebars.compile(templateBaseMain);
+          var htmlStampatoMain = templateCompilatoMain(context);
+          $('main').html(htmlStampatoMain);
+        }
+      })
     },
     error: function(richiesta, stato, errori) {
       console.log("c'è stato un errore " + errori);
     }
   });
+
 
 
 });

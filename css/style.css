@@ -44,3 +44,8 @@ main {
   height: 100%;
   background-color: green;
 }
+main .statisticheGiocatore {
+  height: 100%;
+  width: 100%;
+  color: white;
+}
