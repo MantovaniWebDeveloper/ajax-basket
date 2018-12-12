@@ -3,6 +3,7 @@ $(document).ready(function() {
   // var numeroGiocaotori = 2
   //creao array giocatori
   var legaBasket = [];
+  ;
 
   //var numeroGiocatori = 2;
 
@@ -33,9 +34,6 @@ $(document).ready(function() {
             var templateCompilato = Handlebars.compile(templateBase);
             var context = {
               codiceUnivoco: legaBasket[i].codiceUnivoco,
-              puntiRealizzati: legaBasket[i].puntiRealizzati,
-              rimbalzi: legaBasket[i].rimbalzi,
-              falli: legaBasket[i].falli,
             };
             var htmlStampato = templateCompilato(context);
             $('aside').append(htmlStampato);
@@ -44,17 +42,38 @@ $(document).ready(function() {
         }
 
       }
+
       $('.cardGiocatore').click(function(){
-        var indiceCardGiocatore = $(this).index();
-        console.log(indiceCardGiocatore);
-        if(legaBasket.indexOf(indiceCardGiocatore)){
-          console.log("ok");
-          console.log(context);
-          var templateBaseMain = $('#focusGiocatore').html();
-          var templateCompilatoMain = Handlebars.compile(templateBaseMain);
-          var htmlStampatoMain = templateCompilatoMain(context);
-          $('main').html(htmlStampatoMain);
+        console.log($(this).text());
+        var cliccatoThis = $(this).text();
+        for (var i = 0; i < legaBasket.length; i++) {
+          console.log(legaBasket[i].codiceUnivoco);
+          var cod = legaBasket[i].codiceUnivoco;
+          if(cliccatoThis == cod){
+            console.log(legaBasket[i]);
+          }
+          else {
+            console.log("problema");
+          }
         }
+    /*  var indiceCardGiocatore = $(this).index();
+        for (var i = 0; i < legaBasket.length; i++) {
+          if(legaBasket.indexOf(indiceCardGiocatore)){
+            console.log("ok");
+            var context = {
+              puntiRealizzati: legaBasket[i].puntiRealizzati,
+              rimbalzi: legaBasket[i].rimbalzi,
+              falli: legaBasket[i].falli
+            };
+            console.log(context);
+            var templateBaseMain = $('#focusGiocatore').html();
+            var templateCompilatoMain = Handlebars.compile(templateBaseMain);
+            var htmlStampatoMain = templateCompilatoMain(context);
+            $('main').html(htmlStampatoMain);
+          }
+        } */
+
+
       })
     },
     error: function(richiesta, stato, errori) {
