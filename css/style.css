@@ -25,10 +25,18 @@ aside {
   overflow-y: auto;
 }
 aside .cardGiocatore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 80px;
   width: 100%;
   border-bottom: 1px solid white;
-  background-color: red;
+  background-color: rgb(191, 224, 57);
+  font-size: 25px;
+  cursor: pointer;
+}
+aside .cardGiocatore:hover {
+  background-color: rgb(231, 231, 231);
 }
 main {
   float: left;

@@ -29,18 +29,16 @@ $(document).ready(function() {
         if (legaBasket.length == 10) {
           for (var i = 0; i < legaBasket.length; i++) {
             console.log(legaBasket[i].codiceUnivoco);
-              var templateBase = $('#elencoCodici').html();
-              var templateCompilato = Handlebars.compile(templateBase);
-              var context = {
-                  codiceUnivoco : legaBasket[i].codiceUnivoco,
-                  puntiRealizzati : legaBasket[i].puntiRealizzati,
-                  rimbalzi : legaBasket[i].rimbalzi,
-                  falli : legaBasket[i].falli,
-                };
-                var htmlStampato = templateCompilato(context);
-                $('aside').append(htmlStampato);
-
-
+            var templateBase = $('#elencoCodici').html();
+            var templateCompilato = Handlebars.compile(templateBase);
+            var context = {
+              codiceUnivoco: legaBasket[i].codiceUnivoco,
+              puntiRealizzati: legaBasket[i].puntiRealizzati,
+              rimbalzi: legaBasket[i].rimbalzi,
+              falli: legaBasket[i].falli,
+            };
+            var htmlStampato = templateCompilato(context);
+            $('aside').append(htmlStampato);
           }
 
         }
