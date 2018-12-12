@@ -11,15 +11,24 @@
   height: 100vh;
   background-color: blue;
 }
+
 #wrapContenuti {
   width: 100%;
   height: 100%;
 }
+
 aside {
   float: left;
   width: 30%;
   height: 100%;
   background-color: orange;
+  overflow-y: auto;
+}
+aside .cardGiocatore {
+  height: 80px;
+  width: 100%;
+  border-bottom: 1px solid white;
+  background-color: red;
 }
 main {
   float: left;
