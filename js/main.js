@@ -43,44 +43,29 @@ $(document).ready(function() {
          var thisCode = $(this).text();
          console.log(thisCode);
 
-         for (var i = 0; i < legaBasket.length; i++) {
-           if(thisCode == legaBasket[i].codiceUnivoco){
+         var trovato = false ;
+         var contatore = 0;
+         while(!trovato){
+           if(thisCode == legaBasket[contatore].codiceUnivoco){
              console.log("ok");
              var context = {
-               puntiRealizzati: legaBasket[i].puntiRealizzati,
-               rimbalzi: legaBasket[i].rimbalzi,
-               falli: legaBasket[i].falli
+               puntiRealizzati: legaBasket[contatore].puntiRealizzati,
+               rimbalzi: legaBasket[contatore].rimbalzi,
+               falli: legaBasket[contatore].falli
              };
              console.log(context);
              var templateBaseMain = $('#focusGiocatore').html();
              var templateCompilatoMain = Handlebars.compile(templateBaseMain);
              var htmlStampatoMain = templateCompilatoMain(context);
              $('main').html(htmlStampatoMain);
+             trovato = true;
            }
            else {
              console.log("no");
            }
+
+           contatore ++;
          }
-
-    /* var indiceCardGiocatore = $(this).text();
-     console.log(indiceCardGiocatore);
-        for (var i = 0; i < legaBasket.length; i++) {
-          if(legaBasket.includes(indiceCardGiocatore)){
-            //console.log(indiceCardGiocatore);
-            console.log("ok");
-            var context = {
-              puntiRealizzati: legaBasket[i].puntiRealizzati,
-              rimbalzi: legaBasket[i].rimbalzi,
-              falli: legaBasket[i].falli
-            };
-            console.log(context);
-            var templateBaseMain = $('#focusGiocatore').html();
-            var templateCompilatoMain = Handlebars.compile(templateBaseMain);
-            var htmlStampatoMain = templateCompilatoMain(context);
-            $('main').html(htmlStampatoMain);
-          }
-        }*/
-
 
       })
     },
