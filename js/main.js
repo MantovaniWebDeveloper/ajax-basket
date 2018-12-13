@@ -29,7 +29,7 @@ $(document).ready(function() {
 
         if (legaBasket.length == 10) {
           for (var i = 0; i < legaBasket.length; i++) {
-            console.log(legaBasket[i].codiceUnivoco);
+            //console.log(legaBasket[i].codiceUnivoco);
             var templateBase = $('#elencoCodici').html();
             var templateCompilato = Handlebars.compile(templateBase);
             var context = {
@@ -43,22 +43,34 @@ $(document).ready(function() {
 
       }
 
-      $('.cardGiocatore').click(function(){
-        console.log($(this).text());
-        var cliccatoThis = $(this).text();
+      $('.cardGiocatore p').click(function(){
+         var thisCode = $(this).text();
+         console.log(thisCode);
+
+         for (var i = 0; i < legaBasket.length; i++) {
+           if(thisCode == legaBasket[i].codiceUnivoco){
+             console.log("ok");
+             var context = {
+               puntiRealizzati: legaBasket[i].puntiRealizzati,
+               rimbalzi: legaBasket[i].rimbalzi,
+               falli: legaBasket[i].falli
+             };
+             console.log(context);
+             var templateBaseMain = $('#focusGiocatore').html();
+             var templateCompilatoMain = Handlebars.compile(templateBaseMain);
+             var htmlStampatoMain = templateCompilatoMain(context);
+             $('main').html(htmlStampatoMain);
+           }
+           else {
+             console.log("no");
+           }
+         }
+
+    /* var indiceCardGiocatore = $(this).text();
+     console.log(indiceCardGiocatore);
         for (var i = 0; i < legaBasket.length; i++) {
-          console.log(legaBasket[i].codiceUnivoco);
-          var cod = legaBasket[i].codiceUnivoco;
-          if(cliccatoThis == cod){
-            console.log(legaBasket[i]);
-          }
-          else {
-            console.log("problema");
-          }
-        }
-    /*  var indiceCardGiocatore = $(this).index();
-        for (var i = 0; i < legaBasket.length; i++) {
-          if(legaBasket.indexOf(indiceCardGiocatore)){
+          if(legaBasket.includes(indiceCardGiocatore)){
+            //console.log(indiceCardGiocatore);
             console.log("ok");
             var context = {
               puntiRealizzati: legaBasket[i].puntiRealizzati,
@@ -71,7 +83,7 @@ $(document).ready(function() {
             var htmlStampatoMain = templateCompilatoMain(context);
             $('main').html(htmlStampatoMain);
           }
-        } */
+        }*/
 
 
       })
