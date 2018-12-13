@@ -45,7 +45,12 @@ main {
   background-color: green;
 }
 main .statisticheGiocatore {
-  height: 100%;
-  width: 100%;
-  color: white;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100%;
+width: 100%;
+color: white;
+font-size: 50px;
 }
